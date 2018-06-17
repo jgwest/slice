@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.slice.com/SearchIndexDB" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.slice.com/SearchIndexDB" xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+	jxb:version="1.0" elementFormDefault="qualified">
+
+
+	<element name="IdList" type="tns:idListType"/>
+
+	<complexType name="idListType">
+		<annotation>
+			<appinfo>
+				<jxb:class name="IdListTypeDTO"></jxb:class>
+			</appinfo>
+		</annotation>
+
+		<sequence>
+			<element name="Value" type="string" maxOccurs="unbounded"
+				minOccurs="0" />
+		</sequence>
+
+	</complexType>
+
+	
+
+
+	<element name="LastUpdateInMsecs" type="long"></element>
+
+	<element name="IdListSize" type="long"></element>
+
+	<element name="FileId" type="tns:fileIdType"/>
+	
+	<complexType name="fileIdType">
+		<annotation>
+			<appinfo>
+				<jxb:class name="FileIdTypeDTO"></jxb:class>
+			</appinfo>
+		</annotation>
+
+		<sequence>
+			<element name="File" type="string" maxOccurs="unbounded"
+				minOccurs="0"></element>
+		</sequence>
+		<attribute name="id" type="long"></attribute>
+	</complexType>
+	
+
+	<element name="FileIdList" type="tns:fileIdListType">
+
+	</element>
+	
+	<complexType name="fileIdListType">
+		<annotation>
+			<appinfo>
+				<jxb:class name="FileIdListTypeDTO"></jxb:class>
+			</appinfo>
+		</annotation>
+
+		<sequence>
+			<element ref="tns:FileId" maxOccurs="unbounded" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+
+    <element name="NewQueryIdList" type="tns:newQueryIdListType">
+    </element>
+    
+   	<complexType name="newQueryIdListType">
+		<annotation>
+			<appinfo>
+				<jxb:class name="NewQueryIdListDTO"></jxb:class>
+			</appinfo>
+		</annotation>
+		
+		<sequence>
+			<element name="Id" type="long" maxOccurs="unbounded"
+				minOccurs="1">
+			</element>
+			<element name="FailAfterGivenTimeInMsecs" type="long" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+   	</complexType>    
+   
+    
+    <element name="NewQueryIdListResponse" type="tns:newQueryIdListResponseType">
+	</element>
+	
+	<complexType name="newQueryIdListResponseType">
+		<annotation>
+			<appinfo>
+				<jxb:class name="NewQueryIdListResponseDTO"></jxb:class>
+			</appinfo>
+		</annotation>
+
+		<attribute name="url"/>
+		
+	</complexType>    
+	
+    
+    
+    <element name="QueryIdStatus" type="tns:queryIdStatusType">    	
+    </element>
+
+    
+   	<complexType name="queryIdStatusType">
+		<annotation>
+			<appinfo>
+				<jxb:class name="QueryIdStatusDTO"></jxb:class>
+			</appinfo>
+		</annotation>
+
+		<sequence>
+			<element name="FileIdStatus" maxOccurs="unbounded"
+				minOccurs="1">
+				<complexType>
+					<annotation>
+						<appinfo>
+							<jxb:class name="FileIdStatusDTO"></jxb:class>
+						</appinfo>
+					</annotation>
+
+					<sequence>
+						<element name="Status" type="string" />
+						<element name="Id" type="long" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="ErrorText" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="UserText" type="string" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+   	</complexType>
+    
+    
+    
+    
+
+    <element name="QueryIdResult" type="tns:queryIdResultType">
+       	
+    </element>
+    
+   	<complexType name="queryIdResultType">
+    	<annotation>
+    		<appinfo>
+	    		<jxb:class name="QueryIDResultDTO"/>
+    		</appinfo>
+    	</annotation>
+    	
+  	    	<sequence>
+    		<element name="Result" minOccurs="0" maxOccurs="unbounded">
+    		
+    			<complexType>
+    				<annotation>
+    					<appinfo>
+    						<jxb:class
+    							name="QueryIdResultResultDTO">
+    						</jxb:class>
+    					</appinfo>
+    				</annotation>
+
+    				<sequence>
+    					<element name="Path" type="string"
+    						minOccurs="0" maxOccurs="unbounded">
+    					</element>
+    				</sequence>
+
+    				<attribute name="Id" type="long" use="required"></attribute>
+    			</complexType>
+
+    		</element>
+    		
+    	</sequence>
+    	
+   	</complexType>
+   
+</schema>

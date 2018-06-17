@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.slice.com/datatypes/FileConfiguration"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:tns="http://www.slice.com/datatypes/FileConfiguration"  jxb:version="1.0">
+
+    <complexType name="ProductType">
+		<annotation>
+			<appinfo>
+				<jxb:class name="ProductDTO"></jxb:class>
+			</appinfo>
+		</annotation>
+
+		<all>
+			<element name="Id" type="string" minOccurs="1"></element>
+
+			<element name="PathToSourceDir" type="string"
+				minOccurs="1">
+			</element>
+
+			<!--<element name="JavaSrcFsDatabasePath" type="string"
+				minOccurs="0">
+				</element>
+				<element name="JavaSrcFsLuceneDatabasePath" type="string"
+				minOccurs="0">
+				</element>
+			-->
+
+			<element name="SearchWhoaCowboyFilesNumberText"
+				type="string">
+			</element>
+			<element name="SearchWhoaCowboyFilesNumber" type="int">
+			</element>
+			<element name="SearchWhoaCowboyQueryTimeoutInSecs"
+				type="int">
+			</element>
+			<element name="SearchComponentMapFile" type="string"
+				minOccurs="0">
+			</element>
+			<element name="LogFileOutPath" type="string" maxOccurs="1" minOccurs="0"></element>
+			<element name="SearchAdminEmail" type="string" maxOccurs="1"
+				minOccurs="1">
+			</element>
+
+			<element name="CookieName" type="string" maxOccurs="1"
+				minOccurs="1">
+			</element>
+			<element name="Messages" type="tns:MessagesType"
+				maxOccurs="1" minOccurs="1">
+			</element>
+			<element name="Components" type="tns:ComponentsType"
+				maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="AllowList" maxOccurs="1" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="Allow" type="string"
+							maxOccurs="unbounded" minOccurs="1">
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="SearchIndex" maxOccurs="1" minOccurs="1">
+				<complexType>
+					<choice maxOccurs="1" minOccurs="1">
+						<element name="JavaSrc" maxOccurs="1"
+							minOccurs="1">
+							<complexType>
+								<sequence>
+									<element
+										name="JavaSrcFsDatabasePath" type="string" maxOccurs="1"
+										minOccurs="1">
+									</element>
+									<element
+										name="JavaSrcFsDatabaseUrl" type="string" maxOccurs="1"
+										minOccurs="0">
+									</element>									
+								</sequence>
+							</complexType>
+						</element>
+						<element name="Lucene" maxOccurs="1"
+							minOccurs="1">
+							<complexType>
+								<sequence>
+									<element
+										name="JavaSrcFsLuceneDatabasePath" type="string" maxOccurs="1"
+										minOccurs="1">
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+					</choice>
+				</complexType>
+			</element>
+			<element name="IndexerIgnoreList"
+				type="tns:IndexerIgnoreListType" maxOccurs="1" minOccurs="0">
+			</element>
+			<element name="SearchFileTypes"
+				type="tns:SearchFileTypes">
+			</element>
+			<element name="FileIndexerPath" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="DatabasePresharedKey" type="string" maxOccurs="1" minOccurs="0"></element>
+		</all>
+    </complexType>
+
+    <element name="Config" type="tns:ConfigType"></element>
+    
+    <complexType name="ConfigType">
+    	<annotation>
+    		<appinfo>
+    			<jxb:class name="ConfigDTO"></jxb:class>
+    		</appinfo>
+    	</annotation>
+
+    	<sequence>
+    		<element name="ConfigEntries" type="tns:ConfigEntries" minOccurs="1" maxOccurs="1"/>
+    		<element name="Product" type="tns:ProductType"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</element>
+    	</sequence>
+    	<attribute name="version" type="decimal" use="required"></attribute>
+    </complexType>
+
+
+    <complexType name="MessagesType">
+		<annotation>
+			<appinfo>
+				<jxb:class name="MessagesDTO"></jxb:class>
+			</appinfo>
+		</annotation>
+		<all>
+			<element name="PageTitle" type="string"></element>
+			<element name="TopTitle" type="string"></element>
+			<element name="ContentTitle" type="string"></element>
+			<element name="ContentDescription" type="string"></element>
+
+			<element name="TextToSearchFor" type="string"></element>
+			<element name="SpecifyExclude" type="string"></element>
+			<element name="SpecifyOnlyInclude" type="string"></element>
+		</all>
+    </complexType>
+
+    <complexType name="ComponentsType">
+    
+    	<annotation>
+			<appinfo>
+				<jxb:class name="ComponentsDTO"></jxb:class>
+			</appinfo>
+		</annotation>
+    
+    	<sequence>
+    		<element name="Component" maxOccurs="unbounded" minOccurs="0">
+    			<complexType>
+    				<attribute name="name" type="string"></attribute>
+    				<attribute name="path" type="string"></attribute>
+    			</complexType>
+    		</element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="ConfigEntries">
+		<annotation>
+    		<appinfo>
+    			<jxb:class name="ConfigEntriesDTO"></jxb:class>
+    		</appinfo>
+    	</annotation>
+    	<sequence>
+    		<any minOccurs="0" maxOccurs="unbounded" processContents="lax"></any>
+    	</sequence>
+    </complexType>
+
+    <complexType name="SearchFileTypes">
+        <annotation>
+			<appinfo>
+				<jxb:class name="SearchFileTypesDTO"></jxb:class>
+			</appinfo>
+		</annotation>
+
+    	<sequence>
+    		<element name="SearchFileType" type="tns:SearchFileType" maxOccurs="unbounded" minOccurs="1"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="SearchFileType">
+    	<annotation>
+    		<appinfo>
+    			<jxb:class name="SearchFileTypeDTO"></jxb:class>
+    		</appinfo>
+    	</annotation>
+
+    	<sequence>
+    		<element name="SearchNameText" type="string" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="SupportedExtensionsList"
+    			type="tns:string_list" maxOccurs="1" minOccurs="1">
+    		</element>
+    	</sequence>
+    	<attribute name="selectedByDefault" type="boolean" use="optional"></attribute>
+    </complexType>
+
+
+
+    <simpleType name="string_list">
+	  <list itemType="string" />
+	</simpleType>
+
+    
+
+    <complexType name="IndexerIgnoreListType">
+    	<annotation>
+    		<appinfo>
+    			<jxb:class name="IndexerIgnoreListTypeDTO"></jxb:class>
+    		</appinfo>
+    	</annotation>
+    
+    	<sequence>
+    		<element name="Ignore" type="string" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</element>
+    	</sequence>
+    </complexType>
+</schema>
