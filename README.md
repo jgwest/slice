@@ -22,7 +22,7 @@ cd SliceEAR/target
 
 3) Add configuration settings to the Open Liberty configuration file, `server.xml`:
     * Open the Liberty `server.xml` file at `(install dir)/wlp/usr/servers/defaultServer/server.xml`
-    * If you want Open Liberty to be accessible from other machines, you must use `host="*"`. Add that attribute to the following line to server.xml (you may also edit http/https port): `<httpEndpoint httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint" host="*">`   
+    * If you want Open Liberty to be accessible from other machines, you must use `host="*"`. Add that attribute to the following line in server.xml (you may also edit http/https port): `<httpEndpoint httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint" host="*">`   
     * Add the following to the `server.xml`:
 ```
 	<jndiEntry jndiName="slice/config_xml_path" value="(path to GettingStarted-FileConfiguration.xml in artifacts/ directory of git repo)"/>
