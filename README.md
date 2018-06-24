@@ -33,9 +33,9 @@ cd SliceEAR/target
 4) Run the indexer to index the source code in SRC_DIR, and store the index in DB_DIR
 
 ```
-
 export DB_DIR=(path to where you want to store the database)
 export SRC_DIR=(path to root of git repo)
+# With Windows, use set, rather than export
 
 java -jar (git repo root)/SliceCreation/target/SliceCreation-1.0.0-SNAPSHOT.jar (path to GettingStarted-FileConfiguration.xml in artifacts/ directory of git repo)
 ```
