@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config xmlns="http://www.slice.com/datatypes/FileConfiguration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.slice.com/datatypes/FileConfiguration FileConfiguration.xsd " version="1.0">
+
+	<ConfigEntries>
+		<User name="test-user" password="test-password"/>
+	</ConfigEntries>
+
+	<Product>
+		<Id>test-src</Id>
+		<PathToSourceDir>${NODE_ROOT}/Test/JavaSrc</PathToSourceDir>
+		
+		<SearchWhoaCowboyFilesNumberText>20,000</SearchWhoaCowboyFilesNumberText>
+		<SearchWhoaCowboyFilesNumber>20000</SearchWhoaCowboyFilesNumber>
+		<SearchWhoaCowboyQueryTimeoutInSecs>120</SearchWhoaCowboyQueryTimeoutInSecs>
+
+		<SearchAdminEmail>admin@admin.com</SearchAdminEmail>
+
+		<CookieName>TEST-NOT-USED</CookieName>
+
+		<Messages>
+			<PageTitle>Test Plug-in Text Search</PageTitle>
+			<TopTitle>Test Plug-in Text Search</TopTitle>
+			<ContentTitle>Test Plug-in Text Search</ContentTitle>
+			<ContentDescription>
+				Search the entirety of the Java source (.java files) and metadata (.xml/.mf/.properties/.map) for specific text. All files are pre-indexed for fast results. 
+			</ContentDescription>
+			
+    		<TextToSearchFor>Text to search for &lt;i&gt;(for example, you can search for package or class name)&lt;/i&gt;
+    		</TextToSearchFor>
+    		
+    		<SpecifyExclude>(Optional) Specify file/path patterns to EXCLUDE, separated by commas. No wildcards/regexp. </SpecifyExclude>
+    		<SpecifyOnlyInclude>(Optional) Specify file/path patterns to ONLY INCLUDE matches for, separated by commas. No wildcards/regexp.</SpecifyOnlyInclude>			
+		</Messages>
+
+
+<!--
+		<Components>
+		</Components>
+-->
+
+		<AllowList>
+			<Allow>FilenameIndexer</Allow>
+			<Allow>Slice</Allow>
+		</AllowList>
+
+		<SearchIndex>
+			<JavaSrc>
+				<JavaSrcFsDatabasePath>${NODE_ROOT}/Test/JavaDb/</JavaSrcFsDatabasePath>
+				<JavaSrcFsDatabaseUrl>https://localhost:9443</JavaSrcFsDatabaseUrl>
+			</JavaSrc>
+		</SearchIndex>
+
+		<IndexerIgnoreList>
+		</IndexerIgnoreList>
+
+
+		<SearchFileTypes>
+			<SearchFileType selectedByDefault="true">
+				<SearchNameText>Show matches in .java files (Recommended) </SearchNameText>
+				<SupportedExtensionsList>.java</SupportedExtensionsList>
+			</SearchFileType>			
+			<SearchFileType>
+				<SearchNameText>Show matches in .mf, .xml, .properties, .inf, and .map files </SearchNameText>
+				<SupportedExtensionsList>.mf .xml .properties .inf .map</SupportedExtensionsList>
+			</SearchFileType>
+		</SearchFileTypes>
+		
+		<FileIndexerPath>${NODE_ROOT}/Test/JavaDb/</FileIndexerPath>
+
+		<DatabasePresharedKey>s923d72la90sJ78t7HJod8d8KQ2L9d0qD6522UIdisaiA97d</DatabasePresharedKey>
+
+	</Product>
+
+
+	<Product>
+		<Id>test-src-lucene</Id>
+		<PathToSourceDir>${NODE_ROOT}/Test/JavaSrc</PathToSourceDir>
+		
+		<SearchWhoaCowboyFilesNumberText>20,000</SearchWhoaCowboyFilesNumberText>
+		<SearchWhoaCowboyFilesNumber>20000</SearchWhoaCowboyFilesNumber>
+		<SearchWhoaCowboyQueryTimeoutInSecs>120</SearchWhoaCowboyQueryTimeoutInSecs>
+
+		<SearchAdminEmail>admin@admin.com</SearchAdminEmail>
+
+		<CookieName>TEST-NOT-USED</CookieName>
+
+		<Messages>
+			<PageTitle>Test Plug-in Text Search</PageTitle>
+			<TopTitle>Test Plug-in Text Search</TopTitle>
+			<ContentTitle>Test Plug-in Text Search</ContentTitle>
+			<ContentDescription>
+				Search the entirety of the Java source (.java files) and metadata (.xml/.mf/.properties/.map) for specific text. All files are pre-indexed for fast results. 
+			</ContentDescription>
+			
+    		<TextToSearchFor>Text to search for &lt;i&gt;(for example, you can search for package or class name)&lt;/i&gt;
+    		</TextToSearchFor>
+    		
+    		<SpecifyExclude>(Optional) Specify file/path patterns to EXCLUDE, separated by commas. No wildcards/regexp. </SpecifyExclude>
+    		<SpecifyOnlyInclude>(Optional) Specify file/path patterns to ONLY INCLUDE matches for, separated by commas. No wildcards/regexp.</SpecifyOnlyInclude>			
+		</Messages>
+
+		<AllowList>
+			<Allow>FilenameIndexer</Allow>
+			<Allow>Slice</Allow>
+		</AllowList>
+
+		<SearchIndex>
+			<Lucene>
+				<JavaSrcFsLuceneDatabasePath>${NODE_ROOT}/Test/LuceneDb</JavaSrcFsLuceneDatabasePath>
+			</Lucene>
+		</SearchIndex>
+
+		<IndexerIgnoreList>
+		</IndexerIgnoreList>
+
+
+		<SearchFileTypes>
+			<SearchFileType selectedByDefault="true">
+				<SearchNameText>Show matches in .java files (Recommended) </SearchNameText>
+				<SupportedExtensionsList>.java</SupportedExtensionsList>
+			</SearchFileType>			
+			<SearchFileType>
+				<SearchNameText>Show matches in .mf, .xml, .properties, .inf, and .map files </SearchNameText>
+				<SupportedExtensionsList>.mf .xml .properties .inf .map</SupportedExtensionsList>
+			</SearchFileType>
+		</SearchFileTypes>
+		
+		<FileIndexerPath>${NODE_ROOT}/Test/LuceneDb/</FileIndexerPath>
+
+		<DatabasePresharedKey>s923d72la90sJ78t7HJod8d8KQ2L9d0qD6522UIdisaiA97d</DatabasePresharedKey>
+
+	</Product>
+
+
+</Config>

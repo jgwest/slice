@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_6.xsd" version="6">
+	<display-name>SliceEAR</display-name>
+	<module id="Module_1528990726406">
+		<web>
+			<web-uri>SliceRS.war</web-uri>
+			<context-root>SliceRS</context-root>
+		</web>
+	</module>
+	<module id="Module_1528990726817">
+		<web>
+			<web-uri>SliceWeb.war</web-uri>
+			<context-root>SliceWeb</context-root>
+		</web>
+	</module>
+	<module id="Module_1528991901343">
+		<web>
+			<web-uri>SliceFilenameIndexerService.war</web-uri>
+			<context-root>SliceFilenameIndexerService</context-root>
+		</web>
+	</module>
+	
+</application>

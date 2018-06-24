@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="SliceEAR">
+        <wb-resource deploy-path="/" source-path="/" tag="defaultRootSource"/>
+        <dependent-module archiveName="SliceShared.jar" deploy-path="/lib" handle="module:/resource/SliceShared/SliceShared">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SliceRS.war" deploy-path="/" handle="module:/resource/SliceRS/SliceRS">
+            <dependent-object>Module_1528990726406</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SliceStandaloneUtils.jar" deploy-path="/lib" handle="module:/resource/SliceStandaloneUtils/SliceStandaloneUtils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SliceUIShared.jar" deploy-path="/lib" handle="module:/resource/SliceUIShared/SliceUIShared">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SliceWeb.war" deploy-path="/" handle="module:/resource/SliceWeb/SliceWeb">
+            <dependent-object>Module_1528990726817</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SliceModels.jar" deploy-path="/lib" handle="module:/resource/SliceModels/SliceModels">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SliceFilenameIndexerService.war" deploy-path="/" handle="module:/resource/SliceFilenameIndexerService/SliceFilenameIndexerService">
+            <dependent-object>Module_1528991901343</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="lucene-core-4.5.0.jar" deploy-path="/lib" handle="module:/classpath/lib/SliceShared/lib/lucene-core-4.5.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="lucene-analyzers-common-4.5.0.jar" deploy-path="/lib" handle="module:/classpath/lib/SliceShared/lib/lucene-analyzers-common-4.5.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="lucene-queryparser-4.5.0.jar" deploy-path="/lib" handle="module:/classpath/lib/SliceShared/lib/lucene-queryparser-4.5.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SliceConfigPasswordService.jar" deploy-path="/lib" handle="module:/resource/SliceConfigPasswordService/SliceConfigPasswordService">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

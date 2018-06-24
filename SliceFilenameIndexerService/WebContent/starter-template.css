@@ -1,0 +1,20 @@
+body {
+	padding-top: 25px;
+	padding-bottom: 75px;
+	font-family: Verdana;
+	line-height:110%;
+}
+
+.starter-template {
+	padding: 40px 15px;
+	text-align: center;
+}
+
+.jgwLabel {
+	font-weight: normal
+}
+.boldstyle {
+	font-weight: bold;
+	font-family: Courier;
+	color: #1111A0;	
+}

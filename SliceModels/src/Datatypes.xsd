@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.slice.com/datatypes"
+	elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.slice.com/datatypes" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" jxb:version="1.0">
+
+
+	<complexType name="queryType">
+		<annotation>
+			<appinfo>
+				<jxb:class name="QueryDTO"></jxb:class>
+			</appinfo>
+		</annotation>	
+		<sequence>
+			<element name="wholeWordOnly" type="boolean"></element>
+			<element name="caseSensitive" type="boolean"></element>
+			<element name="searchFileTypes" type="tns:intListType"></element>
+			<element name="searchTerm" type="tns:valueListType"></element>
+			<element name="pathExcludeFilterPatterns"
+				type="tns:valueListType">
+			</element>
+			<element name="pathIncludeOnlyFilterPatterns"
+				type="tns:valueListType">
+			</element>
+			<element name="pathIncludeComponentFilterPatterns"
+				type="tns:valueListType">
+			</element>
+		</sequence>
+	</complexType>
+
+
+	<complexType name="resourceCreateResponseType">
+		<annotation>
+			<appinfo>
+				<jxb:class name="ResourceCreateResponseDTO"></jxb:class>
+			</appinfo>
+		</annotation>	
+	
+		<sequence>
+			<element name="uri" type="string"></element>
+			<element name="userMessage" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="queryStatusType">
+		<annotation>
+			<appinfo>
+				<jxb:class name="QueryStatusDTO"></jxb:class>
+			</appinfo>
+		</annotation>		
+		<sequence>
+			<element name="status" type="string"></element>
+			<element name="numResults" type="int"></element>
+			<element name="userMessage" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="errorMessage" type="string" maxOccurs="1"
+				minOccurs="0">
+			</element>
+			<element name="startTime" type="long"></element>
+			<element name="searchTermsUrl" type="string" maxOccurs="1" minOccurs="0"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="resultEntryType">
+		<annotation>
+			<appinfo>
+				<jxb:class name="ResultEntryDTO"></jxb:class>
+			</appinfo>
+		</annotation>		
+	
+		<sequence>
+			<element name="path" type="string"></element>
+			<element name="content" type="string"></element>
+			<element name="fileUrl" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<complexType name="searchResultListType">
+		<annotation>
+			<appinfo>
+				<jxb:class name="SearchResultListDTO"></jxb:class>
+			</appinfo>
+		</annotation>		
+		<sequence>
+			<element name="searchResultListEntry" type="tns:resultEntryType" maxOccurs="unbounded" minOccurs="1"></element>
+		</sequence>
+	</complexType>
+
+	<element name="Query" type="tns:queryType"></element>
+
+	<element name="QueryStatus" type="tns:queryStatusType"></element>
+
+	<element name="ResourceCreateResponse"
+		type="tns:resourceCreateResponseType">
+	</element>
+
+	<element name="SearchResultList" type="tns:searchResultListType"></element>
+
+	<complexType name="fileContentsType">
+		<annotation>
+			<appinfo>
+				<jxb:class name="FileContentsDTO"></jxb:class>
+			</appinfo>
+		</annotation>	
+	
+		<sequence>
+			<element name="path" type="string"></element>
+			<element name="filename" type="string"></element>
+			<element name="contents" type="string"></element>
+			<element name="component" type="string"></element>
+			<element name="errorText" type="string"></element>
+		</sequence>
+	</complexType>
+
+	<element name="FileContents" type="tns:fileContentsType"></element>
+	
+	<simpleType name="valueListType">
+		<list itemType="string" />
+	</simpleType>
+	
+	<simpleType name="intListType">
+		<list itemType="string" />
+	</simpleType>
+
+	
+</schema>
