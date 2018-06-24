@@ -12,6 +12,7 @@ Slice is a [backronym](https://en.wikipedia.org/wiki/Backronym) that stands for 
 1) Clone the repo, build it, and extract the newly built Open Liberty server:
 ```
 git clone https://github.com/jgwest/slice
+cd slice
 mvn clean package
 cd SliceEAR/target
 ```
