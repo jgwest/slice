@@ -22,17 +22,13 @@ cd SliceEAR/target
 
 3) Add configuration settings to the Open Liberty configuration file, `server.xml`:
     * Open the Liberty `server.xml` file at `(install dir)/wlp/usr/servers/defaultServer/server.xml`
+    * If you want Open Liberty to be accessible from other machines, you must use `host="*"`. Add that attribute to the following line to server.xml (you may also edit http/https port): `<httpEndpoint httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint" host="*">`   
     * Add the following to the `server.xml`:
 ```
 	<jndiEntry jndiName="slice/config_xml_path" value="(path to GettingStarted-FileConfiguration.xml in artifacts/ directory of git repo)"/>
 	<jndiEntry jndiName="slice/SRC_DIR" value="(path to root of git repo)"/>
 	<jndiEntry jndiName="slice/DB_DIR" value="(path to where you want to store the database)"/>
 ```
-   * If you want Open Liberty to be accessible from other machines, you must use `host="*"`. Add that attribute to the following line to server.xml (you may also edit http/https port):
-```
-    <httpEndpoint httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint" host="*">
-```
-
 
 4) Run the indexer to index the source code in SRC_DIR, and store the index in DB_DIR
 
