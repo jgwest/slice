@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config xmlns="http://www.slice.com/datatypes/FileConfiguration" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.slice.com/datatypes/FileConfiguration FileConfiguration.xsd " version="1.0">
+
+	<!-- 
+	
+	Any values contained within ${}, such as ${SRC_DIR}, will be replaced as follows, where (env_var) is the internal key, eg SRC_DIR:
+	1. Look for an environment variable key matching (env_var), if found, use the environment variable value.
+	2. If above not found, look for a JNDI key 'slice/(env_var)', and if found use the value
+	3. If above not found, look for a JVM system property (specified to the JVM as -D(env_var)=(value) ), and use that value if found.
+
+	This gives you a variety of options on how to configure user-defined values in your configuration file: from system/liberty environment variables, 
+	from the Liberty server.xml, or from system properties of he JVM.
+	-->
+
+	<ConfigEntries>
+		<!-- A list of user name/password combinations -->
+		<User name="test-user" password="test-password"/>
+	</ConfigEntries>
+
+	<Product>
+		<!-- The name of the product, which controls the URL it can be accessed at: /SliceRS/resources/(id) -->
+		<Id>test-src</Id>
+
+		<!-- A directory on the local file system where the source files (the files being indexed) can be found -->
+		<PathToSourceDir>${SRC_DIR}</PathToSourceDir>
+		
+		<!-- Constants which set maximum limits on the computational size of search requests -->
+
+		<!-- Constant: User-visible text value corresponding to the value below -->
+		<SearchWhoaCowboyFilesNumberText>20,000</SearchWhoaCowboyFilesNumberText>
+		<!-- Constant: The maximum number of matching files we will allow, before giving up -->
+		<SearchWhoaCowboyFilesNumber>20000</SearchWhoaCowboyFilesNumber>
+		<!-- Constant: The maximum length of a query we will allow before giving up -->
+		<SearchWhoaCowboyQueryTimeoutInSecs>120</SearchWhoaCowboyQueryTimeoutInSecs>
+
+		<!-- Where users can contact the administrator of this application (this is used at various points in the UI) -->
+		<SearchAdminEmail>admin@admin.com</SearchAdminEmail>
+
+		<!-- The prescence of a cookie with this name will indicate the user is authorized to access the product. -->
+		<CookieName>TEST-NOT-USED</CookieName>
+
+		<!--  These values control what text is displayed in the search page user interface. -->
+		<Messages>
+			<PageTitle>Text Search</PageTitle>
+			<TopTitle>Text Search</TopTitle>
+			<ContentTitle>Text Search</ContentTitle>
+			<ContentDescription>
+				Search the entirety of the Java source (.java files) and metadata (.xml/.mf/.properties) for specific text. All files are pre-indexed for fast results. 
+			</ContentDescription>
+			
+    		<TextToSearchFor>Text to search for &lt;i&gt;(for example, you can search for package or class name)&lt;/i&gt;
+    		</TextToSearchFor>
+    		
+    		<SpecifyExclude>(Optional) Specify file/path patterns to EXCLUDE, separated by commas. No wildcards/regexp. </SpecifyExclude>
+    		<SpecifyOnlyInclude>(Optional) Specify file/path patterns to ONLY INCLUDE matches for, separated by commas. No wildcards/regexp.</SpecifyOnlyInclude>			
+		</Messages>
+
+
+<!--  Individual directories can be designated as components. Once a component is created in the XML, you can limit your search to one or more specific components from the web UI.
+
+For example, if all the files in the 'myapp-backend' directory are part of a "Our product backend" component, then you can use the following Component xml:
+
+	<Component name="Our product backend" path="myapp-bakend" />
+
+Then, if the user selects 'Restrict results to only these streams:' in the web UI, and selected 'Our product backend', then only results from the 'myapp-backend' will be displayed.
+ -->
+<!-- 
+		<Components>
+			<Component name="(user visible name)" path="(path substring)" />
+		</Components>
+-->
+
+		<!-- This element specifies which directories will be indexed, and thus which directories are allowed to be viewed by the user. 
+		If a directory is not included in this list, it will not be indexed, and thus cannot be searched.. 
+
+		A directory is allowed if the value specified in the XML matches a substring in the path. -->
+		<AllowList>
+			<Allow>FilenameIndexer</Allow>
+			<Allow>Slice</Allow>
+		</AllowList>
+
+		<SearchIndex>
+			<JavaSrc>
+				<!-- This is the directory where the index database will be stored. -->
+				<JavaSrcFsDatabasePath>${DB_DIR}/Test/JavaDb/</JavaSrcFsDatabasePath>
+				<!-- This value is currently not used -->
+				<JavaSrcFsDatabaseUrl>https://localhost:9443</JavaSrcFsDatabaseUrl>
+			</JavaSrc>
+
+			<!-- You can instead use an indexer based on Apache Lucene, as an alternative to the Slice indexer above. 
+			You can only have one indexer specified per product: -->
+
+			<!-- 
+			<Lucene>
+				<JavaSrcFsLuceneDatabasePath>${DB_DIR}/Test/LuceneDb</JavaSrcFsLuceneDatabasePath>
+			</Lucene>
+			-->
+
+		</SearchIndex>
+
+		<!-- You can specify path substrings to ignore; any file paths that match will not be indexed (and thus excluded from search results) -->
+		<IndexerIgnoreList>
+			<!--
+			<Ignore>(ignore any files that match this substring)</Ignore>
+			-->
+		</IndexerIgnoreList>
+
+
+		<!-- This XML element specifies the files that will be indexed, based on the file's file extension.  -->
+		<SearchFileTypes>
+			<!-- 'selectedByDefault' is an optional attribute which may be specified on any of the types, and which
+			controls whether the web UI defaults to that value as cheked. -->
+			<SearchFileType selectedByDefault="true">
+				
+				<!-- The text in the UI which corresponds to this extensions list -->
+				<SearchNameText>Show matches in .java files (Recommended) </SearchNameText>
+				
+				<!-- A list of file extensions, separated by spaces, to index. -->
+				<SupportedExtensionsList>.java</SupportedExtensionsList>
+			</SearchFileType>
+			
+			<SearchFileType>
+				<SearchNameText>Show matches in .mf, .xml and .properties files </SearchNameText>
+				<SupportedExtensionsList>.mf .xml .properties</SupportedExtensionsList>
+			</SearchFileType>
+		</SearchFileTypes>
+		
+		<!-- The directory of the file indexer database. -->
+		<FileIndexerPath>${DB_DIR}/Test/JavaDb/</FileIndexerPath>
+
+	</Product>
+	
+	<!-- You can specify additional products here -->
+	<!-- 
+	<Product>
+		(...)
+	</Product>
+	-->
+
+</Config>

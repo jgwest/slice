@@ -240,7 +240,7 @@ for(ISearchFileType availableType:  availableSearchFileTypes) {
 
 <br/>
 <% if(components != null && components.size() > 0) { %>
-	<b>(Optional) Restrict results to <i>only</i> these streams:</b><br/>
+	<b>(Optional) Restrict results to <i>only</i> these components:</b><br/>
 <% } 
 
 	int c = -1;
