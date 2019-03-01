@@ -51,6 +51,13 @@ java -jar (git repo root)/SliceCreation/target/SliceCreation-1.0.0-SNAPSHOT.jar 
 (install dir)/wlp/bin/server run
 ```
 
-
 6) Visit the Slice application at `https://(your host name):9443/SliceRS/resources/test-src`. Before you can issue search requests, you must log-in. Click `Click here to log-in here.` The username is `test-user`, the password is `test-password`. Both of these values are specified in the `GettingStarted-FileConfiguration.xml` file.
+
+## Screenshots
+
+*Search for code using a flexible set of query filters*:
+![Screenshot of search view](artifacts/Slice-screenshot1.png "Screenshot of search view")
+
+*See search results in pretty-printed source code files*:
+![Screenshot of text view](artifacts/Slice-screenshot2.png "Screenshot of text view")
 
