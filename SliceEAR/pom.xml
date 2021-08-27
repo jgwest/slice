@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>Slice</groupId>
@@ -8,11 +7,11 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>ear</packaging>
 
-	<parent> 
+	<parent>
 		<groupId>net.wasdev.wlp.maven.parent</groupId>
 		<artifactId>liberty-maven-app-parent</artifactId>
-		<version>2.4</version> 
-	</parent> 
+		<version>2.4</version>
+	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -86,16 +85,16 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
+			<version>[4.13.1,)</version>
 			<scope>test</scope>
-		</dependency>		
-		
+		</dependency>
+
 		<dependency>
 			<groupId>com.slice</groupId>
 			<artifactId>SliceTests</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>test</scope>
-		</dependency>		
+		</dependency>
 
 
 		<dependency>
@@ -104,7 +103,7 @@
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 
-	
+
 	</dependencies>
 
 	<build>
@@ -119,7 +118,7 @@
 				</configuration>
 			</plugin>
 			<!-- Plugin to run unit tests -->
-<!-- 
+			<!-- 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -149,10 +148,10 @@
 				<version>2.4</version>
 				<configuration>
 					<assemblyArtifact>
-                         <groupId>io.openliberty</groupId>
-                         <artifactId>openliberty-runtime</artifactId>
-                         <version>18.0.0.1</version>
-                        <type>zip</type>
+						<groupId>io.openliberty</groupId>
+						<artifactId>openliberty-runtime</artifactId>
+						<version>18.0.0.1</version>
+						<type>zip</type>
 					</assemblyArtifact>
 					<configFile>${basedir}/artifacts/server.xml</configFile>
 					<serverEnv>${basedir}/files/server.env</serverEnv>
@@ -181,7 +180,7 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin> 
+			</plugin>
 			<!-- Plugin to run functional tests -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -195,7 +194,9 @@
 							<goal>integration-test</goal>
 						</goals>
 						<configuration>
-							<dependenciesToScan><dependency>com.slice:SliceTests</dependency></dependenciesToScan>
+							<dependenciesToScan>
+								<dependency>com.slice:SliceTests</dependency>
+							</dependenciesToScan>
 							<includes>
 								<include>**/**MavenTestSuite**</include>
 							</includes>
